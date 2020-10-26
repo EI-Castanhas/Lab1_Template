@@ -9,7 +9,29 @@ public class Main {
 
         Queue<Integer> queue = new QueueLinkedList<>();
 
-        //TODO: testar implementação
+        try {
+            for (int i=0; i<100; i++) {
+                queue.enqueue(i);
+            }
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            System.out.println("Queue is empty? " + queue.isEmpty());
+
+            System.out.println("Front of Queue is: " + queue.front());
+
+            System.out.println("Pop all elements from queue:");
+            while(!queue.isEmpty()) {
+                System.out.println(queue.dequeue());
+            }
+
+            System.out.println("Queue is empty? " + queue.isEmpty());
+
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 }
