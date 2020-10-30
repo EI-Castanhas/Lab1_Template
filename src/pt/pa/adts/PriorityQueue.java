@@ -1,17 +1,11 @@
 package pt.pa.adts;
 
-/**
- * TODO: Fornecer documentação da classe.
- *
- * @param <T>
- */
-public class QueueLinkedList<T> implements Queue<T> {
-
+public class PriorityQueue<T extends Comparable<T>> implements Queue<T> {
     private Node header; //início da fila
     private Node trailer; //fim da fila
     private int size; //Quantidade de elementos na fila
 
-    public QueueLinkedList() {
+    public PriorityQueue() {
         this.header = new Node(null, null, null);
         this.trailer = new Node(null, null, null);
         this.size = 0;
@@ -40,18 +34,32 @@ public class QueueLinkedList<T> implements Queue<T> {
     @Override
     public T dequeue() throws EmptyQueueException {
         if (this.size == 0) throw new EmptyQueueException("no elements");
+        Node node, aux;
+        node = aux = this.trailer.rear;
 
-        T elem2Return = header.next.element;
-        header.next = header.next.next;
-        header.next.rear = header.next;
-        size--;
-        return elem2Return;
+        while(aux.rear.rear != null){
+            aux = aux.rear;
+            if(node.element.compareTo(aux.element) > 0) node = aux;
+        }
+
+        node.rear.next = node.next;
+        node.next.rear = node.rear;
+        this.size--;
+
+        return (T)node.element;
     }
 
     @Override
     public T front() throws EmptyQueueException {
         if (this.size == 0) throw new EmptyQueueException("no elements");
-        return header.next.element;
+        Node node, aux;
+        node = aux = this.trailer.rear;
+
+        while(aux.rear.rear != null){
+            aux = aux.rear;
+            if(node.element.compareTo(aux.element) > 0) node = aux;
+        }
+        return (T)node.element;
     }
 
     @Override

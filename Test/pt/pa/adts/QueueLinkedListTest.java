@@ -18,9 +18,9 @@ class QueueLinkedListTest {
         queue.enqueue(5);
         queue.enqueue(6);
         Integer result = 5;
-        assertEquals(result,(Integer)queue.front());
+        assertEquals(result, (Integer) queue.front());
         result = 5;
-        assertEquals(result,(Integer)queue.front());
+        assertEquals(result, (Integer) queue.front());
     }
 
     @Test
@@ -28,25 +28,25 @@ class QueueLinkedListTest {
         queue.enqueue(5);
         queue.enqueue(6);
         Integer result = 5;
-        assertEquals(result, (Integer)queue.dequeue());
+        assertEquals(result, (Integer) queue.dequeue());
         result = 6;
-        assertEquals(result, (Integer)queue.dequeue());
+        assertEquals(result, (Integer) queue.dequeue());
     }
 
     @Test
     void front() {
         queue.enqueue(5);
         Integer result = 5;
-        assertEquals(result, (Integer)queue.front());
+        assertEquals(result, (Integer) queue.front());
     }
 
     @Test
     void size() {
         Integer result = 0;
-        assertEquals(result, (Integer)queue.size());
+        assertEquals(result, (Integer) queue.size());
         queue.enqueue(5);
         result = 1;
-        assertEquals(result, (Integer)queue.size());
+        assertEquals(result, (Integer) queue.size());
     }
 
     @Test
@@ -65,12 +65,12 @@ class QueueLinkedListTest {
     }
 
     @Test
-    void testDequeueThrow(){
+    void testDequeueThrow() {
         assertThrows(EmptyQueueException.class, () -> queue.dequeue(), "The queue is empty.");
     }
 
     @Test
-    void testFrontThrow(){
+    void testFrontThrow() {
 
         assertThrows(EmptyQueueException.class, () -> queue.front(), "The queue is empty.");
     }
